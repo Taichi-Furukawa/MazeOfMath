@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour {
-	public static float SPEED = 1500;
+	public static float SPEED = 1000;
 
 	// Use this for initialization
 	void Start () {
@@ -11,7 +11,16 @@ public class PlayerBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector2 direction = new Vector2 (Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical")).normalized;
-		rigidbody2D.velocity = direction * SPEED;
+		Vector2 Ppos = transform.position;
+		if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			Ppos.x += MapGen.CELL_SIZE;
+		} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			Ppos.x -= MapGen.CELL_SIZE;
+		} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			Ppos.y += MapGen.CELL_SIZE;
+		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			Ppos.y -= MapGen.CELL_SIZE;
+		}
+		transform.position = Ppos;
 	}
 }

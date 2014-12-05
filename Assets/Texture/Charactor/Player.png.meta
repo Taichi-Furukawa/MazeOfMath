@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: c68b344c6b11b40c88439d2701dc180a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "\u4E3B\u4EBA\u516C_0"
+    21300000: Player
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -44,7 +44,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: "\u4E3B\u4EBA\u516C_0"
+    - name: Player
       rect:
         serializedVersion: 2
         x: 20
@@ -52,7 +52,7 @@ TextureImporter:
         width: 17
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

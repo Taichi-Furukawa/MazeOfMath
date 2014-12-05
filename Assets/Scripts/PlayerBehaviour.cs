@@ -64,16 +64,30 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	void right_move(){
 		Player_position.x += SPEED;
+		if(Player_position.x < Purpose_position.x-MapGen.CELL_SIZE/2){
+			Player_position.y += SPEED;
+		}
+		if (Player_position.x > Purpose_position.x - MapGen.CELL_SIZE / 2) {
+			Player_position.y -= SPEED;		
+		}
 		transform.position = Player_position;
-		if (Player_position == Purpose_position) {
+		if (Player_position.x > Purpose_position.x) {
+			transform.position = Purpose_position;
 			right = false;
 			move_state = false;
 		}
 	}
 	void left_move(){
 		Player_position.x -= SPEED;
+		if (Player_position.x > Purpose_position.x + MapGen.CELL_SIZE / 2) {
+			Player_position.y += SPEED;
+		}
+		if (Player_position.x < Purpose_position.x + MapGen.CELL_SIZE / 2) {
+			Player_position.y -= SPEED;		
+		}
 		transform.position = Player_position;
-		if (Player_position == Purpose_position) {
+		if (Player_position.x < Purpose_position.x) {
+			transform.position = Purpose_position;
 			left = false;
 			move_state = false;
 		}

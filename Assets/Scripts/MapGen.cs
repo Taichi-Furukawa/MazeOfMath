@@ -18,6 +18,7 @@ public class MapGen : MonoBehaviour {
 	void Start () {
 		floorPrefab = (GameObject)Resources.Load("MapObjects/floor");
 		playerPrefab = (GameObject)Resources.Load ("Charactors/Player");
+		main_cameraPrefab = (GameObject)Resources.Load ("Camera/Main_Camera");
 
 		for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
 			ypos+=CELL_SIZE;
@@ -28,9 +29,9 @@ public class MapGen : MonoBehaviour {
 				PositionMatrix[i,j] = new Vector2(xpos-(CELL_SIZE/2),ypos-(CELL_SIZE/2));
 			}
 		}
-
+		playerPrefab.GetComponent<PlayerBehaviour>().matrix_i = 5;//セットしてからインスタンス化
+		playerPrefab.GetComponent<PlayerBehaviour>().matrix_j = 10;//セットしてからインスタンス化
 		Instantiate (this.playerPrefab,PositionMatrix[5,10],Quaternion.identity);
-		main_cameraPrefab = (GameObject)Resources.Load ("Camera/Main_Camera");
 		Instantiate (this.main_cameraPrefab,PositionMatrix[5,10],Quaternion.identity);
 
 	}

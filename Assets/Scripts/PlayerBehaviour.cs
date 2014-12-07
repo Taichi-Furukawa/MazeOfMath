@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class PlayerBehaviour : MonoBehaviour {
-
-	public static Vector2 matrix_position;
+	//プレイヤーの位置特定(他クラスから見て)
+	public int matrix_i,matrix_j;
 
 	//アニメーションに関する変数
 	float vertical_SPEED = 13.3f; //(20*2/3)
@@ -16,10 +16,13 @@ public class PlayerBehaviour : MonoBehaviour {
 	bool up = false;
 	bool down = false;
 	bool temp_flg = false;
+
+	//画像反転に使う
+	float scale_x;
 	
 	// Use this for initialization
 	void Start () {
-	
+		scale_x = transform.localScale.x;
 	}
 	
 	// Update is called once per frame
@@ -27,33 +30,47 @@ public class PlayerBehaviour : MonoBehaviour {
 		Player_position = transform.position;
 		if (move_state == false) {
 			if (Input.GetKeyDown (KeyCode.RightArrow)) {
+				//画像移動処理
+				matrix_j += 1;
 				right = true;
 				move_state = true;
 				Purpose_position = Player_position;
 				Purpose_position.x += MapGen.CELL_SIZE;
-				//Ppos.x += MapGen.CELL_SIZE;
+				//画像反転処理
+				Vector3 scale = transform.localScale;
+				scale.x = scale_x;
+				transform.localScale = scale;
+			
 			} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+				//画像移動処理
+				matrix_j -= 1;
 				left = true;
 				move_state = true;
 				Purpose_position = Player_position;
 				Purpose_position.x -= MapGen.CELL_SIZE;
-				//Ppos.x -= MapGen.CELL_SIZE;
+				//画像反転処理
+				Vector3 scale = transform.localScale;
+				scale.x = -scale_x;
+				transform.localScale = scale;
+
 			} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
+				//画像移動処理
+				matrix_i += 1;
 				up = true;
 				move_state = true;
 				Purpose_position = Player_position;
-				Purpose_position.y += MapGen.CELL_SIZE;//+MapGen.CELL_SIZE/2;
+				Purpose_position.y += MapGen.CELL_SIZE;
 				temp_flg = false;
 
-				//Ppos.y += MapGen.CELL_SIZE;
 			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+				//画像移動処理
+				matrix_i -= 1;
 				down = true;
 				move_state = true;
 				Purpose_position = Player_position;
 				Purpose_position.y -= MapGen.CELL_SIZE;
 				temp_flg = false;
 
-				//Ppos.y -= MapGen.CELL_SIZE;
 			}
 		}
 		if (right) {
@@ -72,6 +89,11 @@ public class PlayerBehaviour : MonoBehaviour {
 			down_move();
 		}
 		//transform.position = Ppos;
+	}
+
+	public void set_matrix_ij(int i,int j){
+		matrix_i = i;
+		matrix_j = j;
 	}
 	
 	void right_move(){

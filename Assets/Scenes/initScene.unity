@@ -139,3 +139,4 @@ MonoBehaviour:
   floorPrefab: {fileID: 0}
   playerPrefab: {fileID: 0}
   main_cameraPrefab: {fileID: 0}
+  wallPrefab: {fileID: 0}

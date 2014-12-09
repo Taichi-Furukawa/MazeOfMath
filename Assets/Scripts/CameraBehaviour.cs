@@ -7,7 +7,7 @@ public class CameraBehaviour : MonoBehaviour {
 
 	int i,j,old_i,old_j;
 
-	float SPEED = 13.3f;
+	float SPEED = 6.0f;
 	Vector2 Camera_position;
 	Vector2 Purpose_position;
 	bool left = false;
@@ -20,7 +20,7 @@ public class CameraBehaviour : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		int i = player.GetComponent<PlayerBehaviour>().matrix_i;
 		int j = player.GetComponent<PlayerBehaviour>().matrix_j;
-		Vector2 my_position = MapGen.PositionMatrix[i,j];
+		Vector2 my_position = MapWillLoad.PositionMatrix[i,j];
 
 		transform.position = new Vector3 (my_position.x, my_position.y, -10);
 		old_i = i;
@@ -38,22 +38,22 @@ public class CameraBehaviour : MonoBehaviour {
 		if(j > old_j){
 			right = true;
 			Purpose_position = Camera_position;
-			Purpose_position.x += MapGen.CELL_SIZE;
+			Purpose_position.x += MapWillLoad.CELL_SIZE;
 		}
 		if(j < old_j){
 			left = true;
 			Purpose_position = Camera_position;
-			Purpose_position.x -= MapGen.CELL_SIZE;
+			Purpose_position.x -= MapWillLoad.CELL_SIZE;
 		}
 		if(i > old_i){
 			up = true;
 			Purpose_position = Camera_position;
-			Purpose_position.y += MapGen.CELL_SIZE;
+			Purpose_position.y += MapWillLoad.CELL_SIZE;
 		}
 		if(i < old_i){
 			down = true;
 			Purpose_position = Camera_position;
-			Purpose_position.y -= MapGen.CELL_SIZE;
+			Purpose_position.y -= MapWillLoad.CELL_SIZE;
 		}
 
 		if(right){

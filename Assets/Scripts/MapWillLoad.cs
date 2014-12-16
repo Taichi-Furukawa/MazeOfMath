@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class MapWillLoad : MonoBehaviour {
-	public static int MAP_LENGTH_WIDTH = 20;
-	public static int MAP_LENGTH_HEIGHT = 10;
+	public static int MAP_LENGTH_WIDTH = 30;
+	public static int MAP_LENGTH_HEIGHT = 30;
 	public static int CELL_SIZE = 40;
 	public static Vector2[,] PositionMatrix= new Vector2[MAP_LENGTH_HEIGHT, MAP_LENGTH_WIDTH];
-	public static string[,] MaterialMatrix = new string[MAP_LENGTH_HEIGHT, MAP_LENGTH_WIDTH]; 
+	public static string[,] MaterialMatrix ;//= new string[MAP_LENGTH_HEIGHT, MAP_LENGTH_WIDTH]; 
+	public static Dungeon dungeon = new Dungeon(MAP_LENGTH_HEIGHT,MAP_LENGTH_WIDTH,3,5);
 
 	public GameObject floorPrefab;
 	public GameObject playerPrefab;
@@ -17,6 +18,7 @@ public class MapWillLoad : MonoBehaviour {
 	int ypos = 0;
 
 	void Start () {
+
 		floorPrefab = (GameObject)Resources.Load("MapObjects/floor");
 		playerPrefab = (GameObject)Resources.Load ("Charactors/Player");
 		main_cameraPrefab = (GameObject)Resources.Load ("Camera/Main_Camera");
@@ -32,7 +34,7 @@ public class MapWillLoad : MonoBehaviour {
 			}
 		}
 
-		for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
+		/*for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
 			for (int j=0; j<MAP_LENGTH_WIDTH; j++) {
 				if(i==0 || i==MAP_LENGTH_HEIGHT-1 || j==0 || j==MAP_LENGTH_WIDTH-1){
 					MaterialMatrix[i,j] = "wall";
@@ -41,8 +43,17 @@ public class MapWillLoad : MonoBehaviour {
 					MaterialMatrix[i,j] = "floor";
 				}
 			}
+		}*/
+		MaterialMatrix = dungeon.CreateDungeon();
+
+		for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
+			for (int j=0; j<MAP_LENGTH_WIDTH; j++) {
+				if(MaterialMatrix[i,j] == "Wall"){
+					Instantiate(this.wallPrefab,PositionMatrix[i,j],Quaternion.identity);
+				}
+
+			}
 		}
-				
 
 				
 		playerPrefab.GetComponent<PlayerBehaviour>().matrix_i = 5;//セットしてからインスタンス化

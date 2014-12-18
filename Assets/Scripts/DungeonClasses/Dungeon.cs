@@ -71,7 +71,7 @@ public class Dungeon{
 					int By = (rectB.room_top - rectB.room_bottom) / 2 + rectB.room_bottom;
             		int temp_dis = 0;
 
-					if(rectA.left && rectB.right){//自分の左側が接続可
+					if(rectA.left && rectB.right){//自分の左が接続
                         temp_dis = (Ax - Bx) + Math.Abs(Ay - By);
                         if (temp_dis < min_left_dis) {
                             left = m;
@@ -127,12 +127,12 @@ public class Dungeon{
 	}
 
     void ConnectRoom(DungeonRect rectA, DungeonRect rectB,string str) {
-    	Debug.Log("ConnectRoom");
+    	//Debug.Log("ConnectRoom");
     	int y1,y2,x;
     	int x1,x2,y;
     	if(UnityEngine.Random.Range(0,5) <= 5){
 		    if (str.Equals("left")) {
-				Debug.Log("ConnectRoom left");
+				//Debug.Log("ConnectRoom left");
 		        y1 = UnityEngine.Random.Range(rectA.room_bottom+1,rectA.room_top-1);
 		    	y2 = UnityEngine.Random.Range(rectB.room_bottom+1,rectB.room_top-1);
 		    	x = UnityEngine.Random.Range(rectB.room_right+1,rectA.room_left-1);
@@ -155,7 +155,7 @@ public class Dungeon{
 
 		    }
 		    if (str.Equals("right")) { 
-				Debug.Log("ConnectRoom right");
+				//Debug.Log("ConnectRoom right");
 		        y1 = UnityEngine.Random.Range(rectA.room_bottom+1,rectA.room_top-1);
 		    	y2 = UnityEngine.Random.Range(rectB.room_bottom+1,rectB.room_top-1);
 		    	x = UnityEngine.Random.Range(rectA.room_right+1,rectB.room_left-1);
@@ -175,7 +175,7 @@ public class Dungeon{
 		    	}
 		    }
 		    if (str.Equals("top")) { 
-				Debug.Log("ConnectRoom top");
+				//Debug.Log("ConnectRoom top");
 				x1 = UnityEngine.Random.Range(rectA.room_left+1,rectA.room_right-1);
 				x2 = UnityEngine.Random.Range(rectB.room_left+1,rectB.room_right-1);
 				y = UnityEngine.Random.Range(rectA.room_top+1,rectB.room_bottom-1);
@@ -199,7 +199,7 @@ public class Dungeon{
 		    
 		    }
 		    if (str.Equals("bottom")) { 
-				Debug.Log("ConnectRoom bottom");
+				//Debug.Log("ConnectRoom bottom");
 				x1 = UnityEngine.Random.Range(rectA.room_left+1,rectA.room_right-1);
 				x2 = UnityEngine.Random.Range(rectB.room_left+1,rectB.room_right-1);
 				y = UnityEngine.Random.Range(rectB.room_top+1,rectA.room_bottom-1);
@@ -239,16 +239,16 @@ public class Dungeon{
 	void CreateRoom(){
 		DungeonRect rect;
 		for(int i = 0;i<RectList.Count; i++){
-			//Debug.Log("Create Room");
+			////Debug.Log("Create Room");
 			rect = RectList[i];
 
 			int max_width = rect.getRectWidth();//Rectに入る最大roomサイズ
 			int max_height = rect.getRectHeight();
-			//Debug.Log("max width = "+max_width+" max_height = "+max_height);
+			////Debug.Log("max width = "+max_width+" max_height = "+max_height);
 
 			int room_width = UnityEngine.Random.Range(minRoomSize,max_width-2);
 			int room_height = UnityEngine.Random.Range(minRoomSize,max_height-2);
-			//Debug.Log("room width = "+room_width+" room_height = "+room_height);
+			////Debug.Log("room width = "+room_width+" room_height = "+room_height);
 
 
 			int room_left = rect.rect_left + UnityEngine.Random.Range(1, rect.getRectWidth() - room_width);
@@ -264,13 +264,13 @@ public class Dungeon{
 
 
 	void PrintRect(){
-		//Debug.Log("Print Rect" + RectList.Count);
+		////Debug.Log("Print Rect" + RectList.Count);
 
 		for(int i = 0;i<RectList.Count;i++){
-			//Debug.Log("rect left = "+RectList[i].rect_left+" top = "+RectList[i].rect_top+" right = "+RectList[i].rect_right+" bottom = "+RectList[i].rect_bottom);
-			//Debug.Log("room left = "+RectList[i].room_left+" top = "+RectList[i].room_top+" right = "+RectList[i].room_right+" bottom = "+RectList[i].room_bottom);
-			//Debug.Log(RectList[i].getRectWidth());
-			//Debug.Log(RectList[i].left);
+			////Debug.Log("rect left = "+RectList[i].rect_left+" top = "+RectList[i].rect_top+" right = "+RectList[i].rect_right+" bottom = "+RectList[i].rect_bottom);
+			////Debug.Log("room left = "+RectList[i].room_left+" top = "+RectList[i].room_top+" right = "+RectList[i].room_right+" bottom = "+RectList[i].room_bottom);
+			////Debug.Log(RectList[i].getRectWidth());
+			////Debug.Log(RectList[i].left);
 			
 		}
 	}
@@ -296,19 +296,19 @@ public class Dungeon{
 	}
 
 	void SplitRect(bool isVertical){
-		//Debug.Log("SplitRect");
+		////Debug.Log("SplitRect");
 		List<DungeonRect> new_RectList = new List<DungeonRect>();
-		//Debug.Log(RectList.Count);
+		////Debug.Log(RectList.Count);
 		int count_newRect = 0;
 		for(int i = 0;i<RectList.Count;i++){//すべてのRectに対して行う
 			DungeonRect parent = RectList[i];
-			//Debug.Log("left = "+parent.rect_left+" top = "+parent.rect_top+" right = "+parent.rect_right+" bottom = "+parent.rect_bottom);
+			////Debug.Log("left = "+parent.rect_left+" top = "+parent.rect_top+" right = "+parent.rect_right+" bottom = "+parent.rect_bottom);
 
 			DungeonRect rectA = new DungeonRect();
 			DungeonRect rectB = new DungeonRect();
 
 			if(isVertical){//縦分割時
-				//Debug.Log("Vertical");
+				////Debug.Log("Vertical");
 				if(parent.getRectWidth() >= (minRoomSize + 3)*2+1){//(最小の部屋区分 + 壁2) * 2 + 通路1のスペースがあるとき
 					int point = UnityEngine.Random.Range(parent.rect_left + (minRoomSize + 3), parent.rect_right - (minRoomSize + 2 + 1));//右側のrectAの右座標を決定(+1は通路分)
 					rectA.setRect(parent.rect_left, parent.rect_top, point, parent.rect_bottom );
@@ -320,7 +320,7 @@ public class Dungeon{
 					new_RectList.Add(parent);
 				}
 			}else{//横分割時
-				//Debug.Log("Horizontal");
+				////Debug.Log("Horizontal");
 				if(parent.getRectHeight() >= (minRoomSize + 3)*2+1){//(最小の部屋区分 + 壁2) * 2 + 通路1のスペースがあるとき
 					int point = UnityEngine.Random.Range(parent.rect_bottom + (minRoomSize + 3), parent.rect_top - (minRoomSize + 2 + 1));
 					rectA.setRect(parent.rect_left, parent.rect_top, parent.rect_right, point);
@@ -351,7 +351,7 @@ public class Dungeon{
 	}
 
 	void Map_AllWall(){
-		Debug.Log("MAP is All wall");
+		//Debug.Log("MAP is All wall");
 		for(int i =0;i<mapHeight;i++){
 			for(int j = 0;j<mapWidth;j++){
 				mapData[i,j] = "Wall";

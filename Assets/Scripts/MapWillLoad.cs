@@ -34,18 +34,8 @@ public class MapWillLoad : MonoBehaviour {
 			}
 		}
 
-		/*for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
-			for (int j=0; j<MAP_LENGTH_WIDTH; j++) {
-				if(i==0 || i==MAP_LENGTH_HEIGHT-1 || j==0 || j==MAP_LENGTH_WIDTH-1){
-					MaterialMatrix[i,j] = "wall";
-					Instantiate(this.wallPrefab,PositionMatrix[i,j],Quaternion.identity);
-				}else{
-					MaterialMatrix[i,j] = "floor";
-				}
-			}
-		}*/
-		MaterialMatrix = dungeon.CreateDungeon();
-
+		MaterialMatrix = dungeon.CreateDungeon();//ダンジョン生成
+		//ダンジョンの壁をインスタンス
 		for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
 			for (int j=0; j<MAP_LENGTH_WIDTH; j++) {
 				if(MaterialMatrix[i,j] == "Wall"){
@@ -54,12 +44,16 @@ public class MapWillLoad : MonoBehaviour {
 
 			}
 		}
+		//Playerを生成するダンジョンの区画をランダムで決める
+		int PlayerRect = UnityEngine.Random.Range(0,dungeon.RectList.Count);
+		//区画内のPlayerの位置をランダムで決定(*中央がよいのか？)
+		int PlayerRect_i = UnityEngine.Random.Range(dungeon.RectList[PlayerRect].room_bottom,dungeon.RectList[PlayerRect].room_top);
+		int PlayerRect_j = UnityEngine.Random.Range(dungeon.RectList[PlayerRect].room_left,dungeon.RectList[PlayerRect].room_right);
+		playerPrefab.GetComponent<PlayerBehaviour>().matrix_i = PlayerRect_i;//セットしてからインスタンス化
+		playerPrefab.GetComponent<PlayerBehaviour>().matrix_j = PlayerRect_j;//セットしてからインスタンス化
 
-				
-		playerPrefab.GetComponent<PlayerBehaviour>().matrix_i = 5;//セットしてからインスタンス化
-		playerPrefab.GetComponent<PlayerBehaviour>().matrix_j = 10;//セットしてからインスタンス化
-		Instantiate (this.playerPrefab,PositionMatrix[5,10],Quaternion.identity);
-		Instantiate (this.main_cameraPrefab,PositionMatrix[5,10],Quaternion.identity);
+		Instantiate (this.playerPrefab,PositionMatrix[PlayerRect_i,PlayerRect_j],Quaternion.identity);
+		Instantiate (this.main_cameraPrefab,PositionMatrix[PlayerRect_i,PlayerRect_j],Quaternion.identity);
 
 	}
 	

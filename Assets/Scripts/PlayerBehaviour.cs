@@ -29,7 +29,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Update () {
 		Player_position = transform.position;
 		if (move_state == false) {
-			if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			if (Input.GetKeyDown (KeyCode.RightArrow) && MapWillLoad.MaterialMatrix[matrix_i,matrix_j+1] != "Wall") {
 				//画像移動処理
 				matrix_j += 1;
 				right = true;
@@ -41,7 +41,7 @@ public class PlayerBehaviour : MonoBehaviour {
 				scale.x = scale_x;
 				transform.localScale = scale;
 			
-			} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			} else if (Input.GetKeyDown (KeyCode.LeftArrow) && MapWillLoad.MaterialMatrix[matrix_i,matrix_j-1] != "Wall") {
 				//画像移動処理
 				matrix_j -= 1;
 				left = true;
@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour {
 				scale.x = -scale_x;
 				transform.localScale = scale;
 
-			} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			} else if (Input.GetKeyDown (KeyCode.UpArrow) && MapWillLoad.MaterialMatrix[matrix_i+1,matrix_j] != "Wall") {
 				//画像移動処理
 				matrix_i += 1;
 				up = true;
@@ -62,7 +62,7 @@ public class PlayerBehaviour : MonoBehaviour {
 				Purpose_position.y += MapWillLoad.CELL_SIZE;
 				temp_flg = false;
 
-			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			} else if (Input.GetKeyDown (KeyCode.DownArrow) && MapWillLoad.MaterialMatrix[matrix_i-1,matrix_j] != "Wall") {
 				//画像移動処理
 				matrix_i -= 1;
 				down = true;

@@ -22,11 +22,14 @@ public class PlayerBehaviour : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		particleSystem.renderer.sortingLayerName = "Objects";
+		particleSystem.renderer.sortingOrder = MapWillLoad.PositionMatrix.GetLength(0)-matrix_i;
 		scale_x = transform.localScale.x;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		particleSystem.renderer.sortingOrder = MapWillLoad.PositionMatrix.GetLength(0)-matrix_i;
 		Player_position = transform.position;
 		if (move_state == false) {
 			if (Input.GetKeyDown (KeyCode.RightArrow) && MapWillLoad.MaterialMatrix[matrix_i,matrix_j+1] != "Wall") {

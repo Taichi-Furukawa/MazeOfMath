@@ -39,6 +39,9 @@ public class MapWillLoad : MonoBehaviour {
 		for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
 			for (int j=0; j<MAP_LENGTH_WIDTH; j++) {
 				if(MaterialMatrix[i,j] == "Wall"){
+					this.wallPrefab.particleSystem.renderer.sortingLayerName = "Objects";
+					this.wallPrefab.GetComponent<SandWallBehaviour>().matrix_i = i;
+					this.wallPrefab.GetComponent<SandWallBehaviour>().matrix_j = j;
 					Instantiate(this.wallPrefab,PositionMatrix[i,j],Quaternion.identity);
 				}
 

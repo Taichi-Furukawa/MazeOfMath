@@ -19,6 +19,8 @@ public class CharactorBehaviour : MonoBehaviour {
 
 	public bool move_state = false;
 	public float scale_x;
+
+	public string self_name;
 	// Use this for initialization
 	public void Start () {
 		particleSystem.renderer.sortingLayerName = "Objects";
@@ -48,7 +50,10 @@ public class CharactorBehaviour : MonoBehaviour {
 	}
 
 	public void right_move(){
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = "None";
 		matrix_j += 1;
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = self_name;
+
 		right = true;
 		move_state = true;
 		Purpose_position = Self_position;
@@ -60,7 +65,10 @@ public class CharactorBehaviour : MonoBehaviour {
 	}
 
 	public void left_move(){
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = "None";
 		matrix_j -= 1;
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = self_name;
+
 		left = true;
 		move_state = true;
 		Purpose_position = Self_position;
@@ -72,7 +80,10 @@ public class CharactorBehaviour : MonoBehaviour {
 	}
 
 	public void up_move(){
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = "None";
 		matrix_i += 1;
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = self_name;
+
 		up = true;
 		move_state = true;
 		Purpose_position = Self_position;
@@ -80,7 +91,10 @@ public class CharactorBehaviour : MonoBehaviour {
 	}
 
 	public void down_move(){
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = "None";
 		matrix_i -= 1;
+		MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = self_name;
+
 		down = true;
 		move_state = true;
 		Purpose_position = Self_position;

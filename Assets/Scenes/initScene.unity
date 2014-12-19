@@ -138,5 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 0}
   playerPrefab: {fileID: 0}
+  EnemyPrefab: {fileID: 0}
   main_cameraPrefab: {fileID: 0}
   wallPrefab: {fileID: 0}

@@ -11,6 +11,7 @@ public class MapWillLoad : MonoBehaviour {
 
 	public GameObject floorPrefab;
 	public GameObject playerPrefab;
+	public GameObject EnemyPrefab;
 	public GameObject main_cameraPrefab;
 	public GameObject wallPrefab;
 
@@ -21,6 +22,8 @@ public class MapWillLoad : MonoBehaviour {
 
 		floorPrefab = (GameObject)Resources.Load("MapObjects/floor");
 		playerPrefab = (GameObject)Resources.Load ("Charactors/Player");
+		EnemyPrefab = (GameObject)Resources.Load ("Charactors/Enemy");
+
 		main_cameraPrefab = (GameObject)Resources.Load ("Camera/Main_Camera");
 		wallPrefab = (GameObject)Resources.Load("MapObjects/wall");
 
@@ -58,6 +61,14 @@ public class MapWillLoad : MonoBehaviour {
 		Instantiate (this.playerPrefab,PositionMatrix[PlayerRect_i,PlayerRect_j],Quaternion.identity);
 		Instantiate (this.main_cameraPrefab,PositionMatrix[PlayerRect_i,PlayerRect_j],Quaternion.identity);
 
+		int EnemyRect = UnityEngine.Random.Range(0,dungeon.RectList.Count);
+		//区画内のPlayerの位置をランダムで決定(*中央がよいのか？)
+		int EnemyRect_i = UnityEngine.Random.Range(dungeon.RectList[EnemyRect].room_bottom,dungeon.RectList[EnemyRect].room_top);
+		int EnemyRect_j = UnityEngine.Random.Range(dungeon.RectList[EnemyRect].room_left,dungeon.RectList[EnemyRect].room_right);
+		EnemyPrefab.GetComponent<EnemyBehaviour>().matrix_i = EnemyRect_i;//セットしてからインスタンス化
+		EnemyPrefab.GetComponent<EnemyBehaviour>().matrix_j = EnemyRect_j;//セットしてからインスタンス化
+
+		Instantiate (this.EnemyPrefab,PositionMatrix[EnemyRect_i,EnemyRect_j],Quaternion.identity);
 	}
 	
 	// Update is called once per frame

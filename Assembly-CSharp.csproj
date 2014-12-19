@@ -47,11 +47,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Charactors\CharactorBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Charactors\PlayerBehaviour.cs" />
      <Compile Include="Assets\Scripts\DungeonClasses\Dungeon.cs" />
      <Compile Include="Assets\Scripts\DungeonClasses\DungeonRect.cs" />
      <Compile Include="Assets\Scripts\MapObjectsBehaviour\SandWallBehaviour.cs" />
      <Compile Include="Assets\Scripts\MapWillLoad.cs" />
-     <Compile Include="Assets\Scripts\PlayerBehaviour.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,15 +8,14 @@ public class EnemyBehaviour : CharactorBehaviour {
 	bool random;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 		base.Start ();
 		now_turn = old_turn= Interfaces.turn_count;
 		random = true;
-		self_name = "enemy";
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
 		Self_position = transform.position;
 		now_turn = Interfaces.turn_count;
 		if(old_turn != now_turn){

@@ -23,7 +23,7 @@ public class Dungeon{
 	}
 	public string[,] CreateDungeon(){
 		Map_AllWall();//全部壁にする
-
+		RectList.Clear();
 		RectList.Add(CreateRect(1,mapHeight-1,mapWidth-1,1));//大きなRectを作成
 
 		bool flag = false;

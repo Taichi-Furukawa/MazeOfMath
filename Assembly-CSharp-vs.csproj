@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\DungeonClasses\DungeonRect.cs" />
      <Compile Include="Assets\Scripts\Interfaces.cs" />
      <Compile Include="Assets\Scripts\MapObjectsBehaviour\SandWallBehaviour.cs" />
+     <Compile Include="Assets\Scripts\MapObjectsBehaviour\StairsBehaviour.cs" />
      <Compile Include="Assets\Scripts\MapWillLoad.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
+  - 95: {fileID: 9500000}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -47,6 +48,21 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!95 &9500000
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15810c0b1b94c4a7d9bf433af9e64817, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -59,7 +75,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matrix_i: 4
-  matrix_j: 6
+  matrix_j: 4
+  vertical_SPEED: 6
+  horizontal_SPEED: 18
+  Purpose_position: {x: 0, y: 0}
+  Self_position: {x: 0, y: 0}
+  right: 0
+  left: 0
+  up: 0
+  down: 0
+  temp_flg: 0
+  move_state: 0
+  scale_x: 0
+  self_name: 
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

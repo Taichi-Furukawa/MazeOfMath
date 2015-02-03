@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: c68b344c6b11b40c88439d2701dc180a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Player
+    21300000: Player_0
+    21300002: Player_1
+    21300004: Player_2
+    21300006: Player_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,7 +38,7 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
+  alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 1
@@ -44,15 +47,45 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Player
+    - name: Player_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 28
+        x: 5
+        y: 170
         width: 17
         height: 22
       alignment: 9
-      pivot: {x: .5, y: .200000003}
+      pivot: {x: .5, y: .25}
       border: {x: 0, y: 0, z: 0, w: 0}
-  spritePackingTag: 
+    - name: Player_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 169
+        width: 17
+        height: 23
+      alignment: 9
+      pivot: {x: .5, y: .25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Player_2
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 169
+        width: 17
+        height: 23
+      alignment: 9
+      pivot: {x: .5, y: .25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Player_3
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 170
+        width: 19
+        height: 22
+      alignment: 9
+      pivot: {x: .5, y: .25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 4
   userData: 

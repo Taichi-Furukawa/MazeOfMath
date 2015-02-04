@@ -11,14 +11,14 @@ public class EnemyBehaviour : CharactorBehaviour {
 	// Use this for initialization
 	public void Start () {
 		base.Start ();
-		now_turn = old_turn= Interfaces.turn_count;
+		now_turn = old_turn= turn.turn_count;
 		random = true;
 	}
 	
 	// Update is called once per frame
 	public void Update () {
 		Self_position = transform.position;
-		now_turn = Interfaces.turn_count;
+		now_turn = turn.turn_count;
 		search_player();
 		if(old_turn != now_turn){
 			if(random){

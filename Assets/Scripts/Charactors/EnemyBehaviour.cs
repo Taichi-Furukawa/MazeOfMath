@@ -21,7 +21,7 @@ public class EnemyBehaviour : CharactorBehaviour {
 		Self_position = transform.position;
 		if (Health<=0){
 			MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = "None";
-			Destroy(this);
+			Destroy(gameObject);
 		}
 	}
 	public void run_palyer(){//経路探索すべきか→しない

@@ -58,8 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a521970e124d194c919f729f3cbc358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matrix_i: 2
-  matrix_j: 3
+  matrix_i: 25
+  matrix_j: 10
   vertical_SPEED: 6
   horizontal_SPEED: 18
   Purpose_position: {x: 0, y: 0}
@@ -72,6 +72,12 @@ MonoBehaviour:
   move_state: 0
   scale_x: 0
   self_name: 
+  now_turn: 0
+  old_turn: 0
+  player_i: 0
+  player_j: 0
+  random: 0
+  Health: 2
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -2,43 +2,34 @@
 using System.Collections;
 
 public class EnemyBehaviour : CharactorBehaviour {
-	int now_turn;
-	int old_turn;
-	int player_i,player_j;
-
-	bool random;
+	public int now_turn=0;
+	public int old_turn=0;
+	public int player_i,player_j;
+	public bool random;
+	public int Health = 2;
 
 	// Use this for initialization
 	public void Start () {
 		base.Start ();
 		now_turn = old_turn= turn.turn_count;
 		random = true;
+		//MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = "E1";
 	}
 	
 	// Update is called once per frame
 	public void Update () {
 		Self_position = transform.position;
-		now_turn = turn.turn_count;
-		search_player();
-		if(old_turn != now_turn){
-			if(random){
-				random_walk();
-			}else{
-				run_palyer();
-			}
+		if (Health<=0){
+			MapWillLoad.MaterialMatrix[matrix_i,matrix_j] = "None";
+			Destroy(this);
 		}
-		base.Update ();
-		old_turn = now_turn;
-		//transform.position = Ppos;
 	}
-	void run_palyer(){//経路探索すべきか→しない
+	public void run_palyer(){//経路探索すべきか→しない
 		int min_dis = 9999,temp_dis;
 		string move = "";
-		//Debug.Log("run_palyer");
 
 		if(matrix_in(matrix_i,matrix_j+1)  && MapWillLoad.MaterialMatrix[matrix_i,matrix_j+1] == "None"){
 			temp_dis = Mathf.Abs(matrix_j+1 - player_j) + Mathf.Abs(matrix_i - player_i);
-			////Debug.Log(temp_dis);
 			if(min_dis >= temp_dis){
 				min_dis = temp_dis;
 				move = "right";
@@ -46,7 +37,6 @@ public class EnemyBehaviour : CharactorBehaviour {
 		}
 		if(matrix_in(matrix_i,matrix_j-1) && MapWillLoad.MaterialMatrix[matrix_i,matrix_j-1] == "None"){
 			temp_dis = Mathf.Abs(matrix_j-1 - player_j) + Mathf.Abs(matrix_i - player_i);
-			//Debug.Log(temp_dis);
 			
 			if(min_dis >= temp_dis){
 				min_dis = temp_dis;
@@ -55,7 +45,6 @@ public class EnemyBehaviour : CharactorBehaviour {
 		}
 		if(matrix_in(matrix_i-1,matrix_j) && MapWillLoad.MaterialMatrix[matrix_i-1,matrix_j] == "None"){
 			temp_dis = Mathf.Abs(matrix_j - player_j) + Mathf.Abs(matrix_i-1 - player_i);
-			//Debug.Log(temp_dis);
 			if(min_dis >= temp_dis ){
 				min_dis = temp_dis;
 				move = "down";
@@ -87,7 +76,7 @@ public class EnemyBehaviour : CharactorBehaviour {
 		random = true;
 	}
 
-	void search_player(){
+	public void search_player(){
 		for(int i = matrix_i-3;i<matrix_i+4;i++){
 			for(int j = matrix_j-3;j<matrix_j+4;j++){
 				if(matrix_in(i,j)){
@@ -100,13 +89,13 @@ public class EnemyBehaviour : CharactorBehaviour {
 			}
 		}
 	}
-	bool matrix_in(int i,int j){
+	public bool matrix_in(int i,int j){
 		int hight = MapWillLoad.MAP_LENGTH_HEIGHT-1;
 		int widht = MapWillLoad.MAP_LENGTH_WIDTH-1;
 		return (i >= 0 && i <= hight && j >= 0 && j <= widht);
 	}
 
-	void random_walk(){
+	public void random_walk(){
 		int rand = UnityEngine.Random.Range(0,4);
 		bool retry = false;
 		switch(rand){

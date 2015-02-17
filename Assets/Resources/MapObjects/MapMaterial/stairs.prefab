@@ -42,8 +42,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f5b77e901964945bcb8757cea5ef23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matrix_i: 26
-  matrix_j: 15
+  matrix_i: 11
+  matrix_j: 25
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -25,13 +25,13 @@ public class MapWillLoad : MonoBehaviour {
 	int ypos = 0;
 
 	void Start () {
-		floorPrefab = (GameObject)Resources.Load("MapObjects/floor");
+		floorPrefab = (GameObject)Resources.Load("MapObjects/MapMaterial/floor");
 		playerPrefab = (GameObject)Resources.Load ("Charactors/Player");
 		skeletonPrefab = (GameObject)Resources.Load ("Charactors/Enemys/Skeleton");
 
 		main_cameraPrefab = (GameObject)Resources.Load ("Camera/Main_Camera");
-		wallPrefab = (GameObject)Resources.Load("MapObjects/wall");
-		stairsPrefab = (GameObject)Resources.Load("MapObjects/stairs");
+		wallPrefab = (GameObject)Resources.Load("MapObjects/MapMaterial/wall");
+		stairsPrefab = (GameObject)Resources.Load("MapObjects/MapMaterial/stairs");
 
 		for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
 			ypos+=CELL_SIZE;
@@ -106,7 +106,7 @@ public class MapWillLoad : MonoBehaviour {
 	}
 	void Enemys_instance(){
 		int EnemyRect = UnityEngine.Random.Range(0,dungeon.RectList.Count);
-		while(EnemyRect == PlayerRect && EnemyRect == StairsRect)EnemyRect = UnityEngine.Random.Range(0,dungeon.RectList.Count);
+		while(EnemyRect != PlayerRect && EnemyRect != StairsRect)EnemyRect = UnityEngine.Random.Range(0,dungeon.RectList.Count);//(!=なら同じ部屋に,==なら違う部屋に)
 
 		int EnemyRect_i = UnityEngine.Random.Range(dungeon.RectList[EnemyRect].room_bottom,dungeon.RectList[EnemyRect].room_top);
 		int EnemyRect_j = UnityEngine.Random.Range(dungeon.RectList[EnemyRect].room_left,dungeon.RectList[EnemyRect].room_right);

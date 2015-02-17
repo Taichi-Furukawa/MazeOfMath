@@ -176,6 +176,8 @@
      <Compile Include="Assets\Scripts\MapObjectsBehaviour\StairsBehaviour.cs" />
      <Compile Include="Assets\Scripts\MapWillLoad.cs" />
      <Compile Include="Assets\Scripts\NUGI\HealthMeater.cs" />
+     <Compile Include="Assets\Scripts\NUGI\StartMenu\ExitButton.cs" />
+     <Compile Include="Assets\Scripts\NUGI\StartMenu\StartButton.cs" />
      <Compile Include="Assets\Scripts\NUGI\TimeUI.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />

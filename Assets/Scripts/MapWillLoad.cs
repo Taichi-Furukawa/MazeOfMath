@@ -18,6 +18,9 @@ public class MapWillLoad : MonoBehaviour {
 	public GameObject wallPrefab;
 	public GameObject stairsPrefab;
 
+	private GameObject clone;
+	
+
 	int PlayerRect;
 	int StairsRect;
 
@@ -39,7 +42,8 @@ public class MapWillLoad : MonoBehaviour {
 			for(int j=0;j<MAP_LENGTH_WIDTH;j++){
 				xpos+=CELL_SIZE;
 				GameObjectList.Add(floorPrefab);
-				Instantiate(this.floorPrefab,new Vector3(xpos-(CELL_SIZE/2),ypos-(CELL_SIZE/2),-1),Quaternion.identity);
+				clone = (GameObject)Instantiate(this.floorPrefab,new Vector3(xpos-(CELL_SIZE/2),ypos-(CELL_SIZE/2),-1),Quaternion.identity);
+				clone.transform.parent = gameObject.transform;
 				PositionMatrix[i,j] = new Vector3(xpos-(CELL_SIZE/2),ypos-(CELL_SIZE/2),0+1);
 			}
 		}
@@ -63,7 +67,8 @@ public class MapWillLoad : MonoBehaviour {
 					this.wallPrefab.GetComponent<SandWallBehaviour>().matrix_i = i;
 					this.wallPrefab.GetComponent<SandWallBehaviour>().matrix_j = j;
 					GameObjectList.Add(wallPrefab);
-					Instantiate(this.wallPrefab,PositionMatrix[i,j],Quaternion.identity);
+					clone = (GameObject)Instantiate(this.wallPrefab,PositionMatrix[i,j],Quaternion.identity);
+					clone.transform.parent = gameObject.transform;
 				}
 
 			}

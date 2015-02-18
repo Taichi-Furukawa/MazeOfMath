@@ -60,6 +60,5 @@ public abstract class SystemStop : MonoBehaviour
 	{
 		IsUIEnable = false;
 		IsGameEnable = true;
-		Debug.Log ("Keyboard and Time is Stoped");
 	}
 }

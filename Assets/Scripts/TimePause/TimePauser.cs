@@ -186,8 +186,7 @@ public class TimePauser
 	private static GameObject[] UIObject()
 	{
 		var roots = Root ();
-		var canvas = Array.FindAll (roots, obj => obj.GetComponentsInChildren<UIRoot> () != null);
-		Debug.Log ("UI Object " + canvas.Length);
+		var canvas = Array.FindAll (roots, obj => obj.GetComponents<Behaviour> () != null);
 		// Canvas自体は無効にしたくないので、Canvasの子オブジェクトを対象にする
 		var uiObjs = new List<GameObject> ();
 		for (int i=0; i<canvas.Length; i++) {
@@ -205,6 +204,6 @@ public class TimePauser
 	private static GameObject[] GmObject()
 	{
 		var roots = Root ();
-		return Array.FindAll (roots, obj => obj.GetComponentsInChildren<UIRoot> () == null);
+		return Array.FindAll (roots, obj => obj.GetComponents<Behaviour> () == null);
 	}
 }

@@ -11,7 +11,6 @@ public class StopTime : SystemStop {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Debug.Log ("Menue Destroy");
 			base._pauser.Resume ();
 			Destroy(gameObject);
 		}

@@ -12,10 +12,8 @@ public class KeyBoradinput : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if(saveload ){
-				Debug.Log("SaveMenue SetDown");
 				saveload = false;
 			}else{
-				Debug.Log("SaveMenue Setup");
 				saveload = true;
 				Application.LoadLevelAdditive("SaveLoad");
 			}

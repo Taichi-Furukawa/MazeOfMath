@@ -176,9 +176,15 @@
      <Compile Include="Assets\Scripts\MapObjectsBehaviour\StairsBehaviour.cs" />
      <Compile Include="Assets\Scripts\MapWillLoad.cs" />
      <Compile Include="Assets\Scripts\NUGI\HealthMeater.cs" />
+     <Compile Include="Assets\Scripts\NUGI\MenueSetup\KeyBoradinput.cs" />
+     <Compile Include="Assets\Scripts\NUGI\SaveLoad\LoadButton.cs" />
+     <Compile Include="Assets\Scripts\NUGI\SaveLoad\SaveButton.cs" />
+     <Compile Include="Assets\Scripts\NUGI\SaveLoad\StopTime.cs" />
      <Compile Include="Assets\Scripts\NUGI\StartMenu\ExitButton.cs" />
      <Compile Include="Assets\Scripts\NUGI\StartMenu\StartButton.cs" />
      <Compile Include="Assets\Scripts\NUGI\TimeUI.cs" />
+     <Compile Include="Assets\Scripts\TimePause\SystemStop.cs" />
+     <Compile Include="Assets\Scripts\TimePause\TimePauser.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\Examples\Models\Orc\Orc Skin.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />

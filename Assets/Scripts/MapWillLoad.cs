@@ -47,8 +47,10 @@ public class MapWillLoad : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+
 	void Update () {
 
+		
 	}
 
 	void CreateMap(){

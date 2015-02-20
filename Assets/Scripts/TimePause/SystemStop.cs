@@ -50,6 +50,7 @@ public abstract class SystemStop : MonoBehaviour
 		_pauser = new TimePauser (gameObject);
 		if (IsUIEnable != true) {
 			_pauser.PauseUI();
+
 		}
 		if (IsGameEnable != true) {
 			_pauser.PauseGame();
@@ -59,6 +60,6 @@ public abstract class SystemStop : MonoBehaviour
 	void Awake () 
 	{
 		IsUIEnable = false;
-		IsGameEnable = true;
+		IsGameEnable = false;
 	}
 }

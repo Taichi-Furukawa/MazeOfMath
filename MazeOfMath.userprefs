@@ -1,12 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MapWillLoad.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HierarchyRoot.cs">
     <Files>
-      <File FileName="Assets\Scripts\TimePause\SystemStop.cs" Line="56" Column="4" />
-      <File FileName="Assets\Scripts\TimePause\TimePauser.cs" Line="192" Column="40" />
-      <File FileName="Assets\Scripts\NUGI\SaveLoad\StopTime.cs" Line="14" Column="1" />
-      <File FileName="Assets\Scripts\NUGI\MenueSetup\KeyBoradinput.cs" Line="15" Column="1" />
-      <File FileName="Assets\Scripts\MapWillLoad.cs" Line="46" Column="51" />
+      <File FileName="Assets\Scripts\HierarchyRoot.cs" Line="11" Column="2" />
+      <File FileName="Assets\Scripts\MapWillLoad.cs" Line="29" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

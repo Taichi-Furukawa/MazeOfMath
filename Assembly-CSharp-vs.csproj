@@ -172,6 +172,7 @@
      <Compile Include="Assets\Scripts\DungeonClasses\Dungeon.cs" />
      <Compile Include="Assets\Scripts\DungeonClasses\DungeonRect.cs" />
      <Compile Include="Assets\Scripts\GameRule\turn.cs" />
+     <Compile Include="Assets\Scripts\HierarchyRoot.cs" />
      <Compile Include="Assets\Scripts\MapObjectsBehaviour\SandWallBehaviour.cs" />
      <Compile Include="Assets\Scripts\MapObjectsBehaviour\StairsBehaviour.cs" />
      <Compile Include="Assets\Scripts\MapWillLoad.cs" />

@@ -74,6 +74,7 @@ public class TimePauser
 	/// </summary>
 	public void Resume()
 	{
+
 		// UnityEngine.UI.Selectableを有効
 		_pause_selectables.ForEach (o => o.interactable = true);
 		
@@ -185,8 +186,9 @@ public class TimePauser
 	/// <returns>The object.</returns>
 	private static GameObject[] UIObject()
 	{
+		Debug.Log("UIObject () start");
 		var roots = Root ();
-		var canvas = Array.FindAll (roots, obj => obj.GetComponents<Behaviour> () != null);
+		var canvas = Array.FindAll (roots, obj => obj.GetComponent<UIPanel> () != null);
 		// Canvas自体は無効にしたくないので、Canvasの子オブジェクトを対象にする
 		var uiObjs = new List<GameObject> ();
 		for (int i=0; i<canvas.Length; i++) {
@@ -203,7 +205,10 @@ public class TimePauser
 	/// <returns>The object.</returns>
 	private static GameObject[] GmObject()
 	{
+		Debug.Log("GameObject () start");
 		var roots = Root ();
-		return Array.FindAll (roots, obj => obj.GetComponents<Behaviour> () == null);
+		Debug.Log("GameObject () roots = "+ roots.Length + " FindAll = "+Array.FindAll (roots, obj => obj.GetComponent<HealthMeater> () == null).Length);
+		return Array.FindAll (roots, obj => obj.GetComponents<UIRoot> () == null);
+
 	}
 }

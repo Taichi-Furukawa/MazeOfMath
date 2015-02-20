@@ -18,6 +18,7 @@ public class CameraBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
+		gameObject.name = "MainCamera";
 		int i = player.GetComponent<PlayerBehaviour>().matrix_i;
 		int j = player.GetComponent<PlayerBehaviour>().matrix_j;
 		Vector2 my_position = MapWillLoad.PositionMatrix[i,j];

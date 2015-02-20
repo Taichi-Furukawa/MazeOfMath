@@ -8,6 +8,7 @@ public class PlayerBehaviour : CharactorBehaviour {
 	void Start () {
 		base.Start ();
 		self_name = "Player";
+		gameObject.name = self_name;
 		Player_i = matrix_i;
 		Player_j = matrix_j;
 

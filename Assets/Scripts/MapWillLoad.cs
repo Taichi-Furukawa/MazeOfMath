@@ -19,7 +19,10 @@ public class MapWillLoad : MonoBehaviour {
 	public GameObject stairsPrefab;
 
 	private GameObject clone;
-	
+	public GameObject charactors;
+
+	GameObject Walls;
+	GameObject Floors;
 
 	int PlayerRect;
 	int StairsRect;
@@ -36,6 +39,9 @@ public class MapWillLoad : MonoBehaviour {
 		wallPrefab = (GameObject)Resources.Load("MapObjects/MapMaterial/wall");
 		stairsPrefab = (GameObject)Resources.Load("MapObjects/MapMaterial/stairs");
 
+		Floors = gameObject.transform.FindChild ("Floors").gameObject;
+		Walls = gameObject.transform.FindChild ("Walls").gameObject;
+
 		for (int i=0; i<MAP_LENGTH_HEIGHT; i++) {
 			ypos+=CELL_SIZE;
 			xpos=0;
@@ -43,7 +49,7 @@ public class MapWillLoad : MonoBehaviour {
 				xpos+=CELL_SIZE;
 				GameObjectList.Add(floorPrefab);
 				clone = (GameObject)Instantiate(this.floorPrefab,new Vector3(xpos-(CELL_SIZE/2),ypos-(CELL_SIZE/2),-1),Quaternion.identity);
-				clone.transform.parent = gameObject.transform;
+				clone.transform.parent = Floors.transform;
 				PositionMatrix[i,j] = new Vector3(xpos-(CELL_SIZE/2),ypos-(CELL_SIZE/2),0+1);
 			}
 		}
@@ -68,7 +74,7 @@ public class MapWillLoad : MonoBehaviour {
 					this.wallPrefab.GetComponent<SandWallBehaviour>().matrix_j = j;
 					GameObjectList.Add(wallPrefab);
 					clone = (GameObject)Instantiate(this.wallPrefab,PositionMatrix[i,j],Quaternion.identity);
-					clone.transform.parent = gameObject.transform;
+					clone.transform.parent = Walls.transform;
 				}
 
 			}
@@ -96,7 +102,8 @@ public class MapWillLoad : MonoBehaviour {
 		GameObjectList.Add(playerPrefab);
 		GameObjectList.Add(main_cameraPrefab);
 
-		Instantiate (this.playerPrefab,PositionMatrix[PlayerRect_i,PlayerRect_j],Quaternion.identity);//プレイヤーインスタンス
+		clone = (GameObject) Instantiate (this.playerPrefab,PositionMatrix[PlayerRect_i,PlayerRect_j],Quaternion.identity);//プレイヤーインスタンス
+		clone.transform.parent = HierarchyRoot.Charactors.transform;
 		Instantiate (this.main_cameraPrefab,PositionMatrix[PlayerRect_i,PlayerRect_j],Quaternion.identity);//カメラインスタンス
 
 	}
@@ -109,8 +116,10 @@ public class MapWillLoad : MonoBehaviour {
 		stairsPrefab.GetComponent<StairsBehaviour>().matrix_j = StairsRect_j;//セットしてからインスタンス化
 		GameObjectList.Add(stairsPrefab);
 
-		Instantiate(this.stairsPrefab,PositionMatrix[StairsRect_i,StairsRect_j],Quaternion.identity);
+		clone = (GameObject)Instantiate(this.stairsPrefab,PositionMatrix[StairsRect_i,StairsRect_j],Quaternion.identity);
+		clone.transform.parent = gameObject.transform;
 	}
+
 	void Enemys_instance(){
 		int EnemyRect = UnityEngine.Random.Range(0,dungeon.RectList.Count);
 		while(EnemyRect != PlayerRect && EnemyRect != StairsRect)EnemyRect = UnityEngine.Random.Range(0,dungeon.RectList.Count);//(!=なら同じ部屋に,==なら違う部屋に)
@@ -121,6 +130,7 @@ public class MapWillLoad : MonoBehaviour {
 		skeletonPrefab.GetComponent<EnemyBehaviour>().matrix_j = EnemyRect_j;//セットしてからインスタンス化
 		GameObjectList.Add(skeletonPrefab);
 
-		Instantiate (this.skeletonPrefab,PositionMatrix[EnemyRect_i,EnemyRect_j],Quaternion.identity);
+		clone = (GameObject)Instantiate (this.skeletonPrefab,PositionMatrix[EnemyRect_i,EnemyRect_j],Quaternion.identity);
+		clone.transform.parent = HierarchyRoot.Charactors.transform;
 	}
 }

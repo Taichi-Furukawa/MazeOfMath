@@ -187,16 +187,11 @@ public class TimePauser
 	private static GameObject[] UIObject()
 	{
 		Debug.Log("UIObject () start");
-		var roots = Root ();
-		var canvas = Array.FindAll (roots, obj => obj.GetComponent<UIPanel> () != null);
-		// Canvas自体は無効にしたくないので、Canvasの子オブジェクトを対象にする
-		var uiObjs = new List<GameObject> ();
-		for (int i=0; i<canvas.Length; i++) {
-			for( int n=0; n<canvas[i].transform.childCount; n++ ) {
-				uiObjs.Add ( canvas[i].transform.GetChild( n ).gameObject );
-			}
+		var uiObjects = new List<GameObject> ();
+		foreach(Transform n in HierarchyRoot.GameGUI.transform){
+			uiObjects.Add( n.gameObject);
 		}
-		return uiObjs.ToArray();
+		return uiObjects.ToArray ();
 	}
 	
 	/// <summary>
@@ -206,9 +201,10 @@ public class TimePauser
 	private static GameObject[] GmObject()
 	{
 		Debug.Log("GameObject () start");
-		var roots = Root ();
-		Debug.Log("GameObject () roots = "+ roots.Length + " FindAll = "+Array.FindAll (roots, obj => obj.GetComponent<HealthMeater> () == null).Length);
-		return Array.FindAll (roots, obj => obj.GetComponents<UIRoot> () == null);
-
+		var gmObjects = new List<GameObject>();
+		foreach(Transform n in HierarchyRoot.Charactors.transform){
+			gmObjects.Add(n.gameObject);
+		}
+		return gmObjects.ToArray();
 	}
 }

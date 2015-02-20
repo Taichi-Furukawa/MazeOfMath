@@ -6,8 +6,11 @@ public class TimeUI : MonoBehaviour {
 	public static float time_limet = 3;
 	public static float time = 0,start_time;
 
-	int now_turn;
-	int old_turn;
+	float now_turn;
+	float old_turn;
+	float temp;
+
+	bool isPause = false;
 
 	UISprite sprite;
 	// Use this for initialization
@@ -19,18 +22,29 @@ public class TimeUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		now_turn = turn.turn_count;
+		if (!isPause) {
+			now_turn = turn.turn_count;
+			time = Time.time;
+			temp = time - start_time;
+			sprite.fillAmount = 1 - temp / time_limet;
 
-		float temp = Time.time - start_time;
-		sprite.fillAmount = 1 -  temp / time_limet;
-		if (temp > time_limet) {
-			start_time = Time.time;
-			turn.turn_add();
+			if (temp > time_limet) {
+				start_time = Time.time;
+				turn.turn_add ();
+			}
+
+			if (now_turn != old_turn)
+				start_time = Time.time;
+
+			old_turn = now_turn;
 		}
-		
-		if(now_turn != old_turn) start_time = Time.time;
+	}
 
-		old_turn = now_turn;
+	static public void PauseTime(){
 
-	}	
+	}
+
+	static public void Resume(){
+
+	}
 }

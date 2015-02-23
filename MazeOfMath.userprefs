@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NUGI\TimeUI.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TimePause\TimePauser.cs">
     <Files>
-      <File FileName="Assets\Scripts\HierarchyRoot.cs" Line="11" Column="2" />
+      <File FileName="Assets\Scripts\HierarchyRoot.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MapWillLoad.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TimePause\TimePauser.cs" Line="208" Column="30" />
-      <File FileName="Assets\Scripts\NUGI\TimeUI.cs" Line="11" Column="13" />
-      <File FileName="Assets\Scripts\TimePause\SystemStop.cs" Line="40" Column="32" />
+      <File FileName="Assets\Scripts\TimePause\TimePauser.cs" Line="117" Column="51" />
+      <File FileName="Assets\Scripts\NUGI\TimeUI.cs" Line="42" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

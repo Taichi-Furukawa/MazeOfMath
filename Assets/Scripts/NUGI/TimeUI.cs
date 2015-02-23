@@ -8,7 +8,7 @@ public class TimeUI : MonoBehaviour {
 
 	float now_turn;
 	float old_turn;
-	float temp;
+	float past_time;
 
 	bool isPause = false;
 
@@ -22,29 +22,28 @@ public class TimeUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isPause) {
-			now_turn = turn.turn_count;
-			time = Time.time;
-			temp = time - start_time;
-			sprite.fillAmount = 1 - temp / time_limet;
+		now_turn = turn.turn_count;
+		time = Time.time;
+		past_time = time - start_time;
+		sprite.fillAmount = 1 - past_time / time_limet;
 
-			if (temp > time_limet) {
-				start_time = Time.time;
-				turn.turn_add ();
-			}
-
-			if (now_turn != old_turn)
-				start_time = Time.time;
-
-			old_turn = now_turn;
+		if (past_time > time_limet) {
+			start_time = Time.time;
+			turn.turn_add ();
 		}
+
+		if (now_turn != old_turn)
+			start_time = Time.time;
+
+		old_turn = now_turn;
+		
 	}
 
-	static public void PauseTime(){
-
+	public void Pause(){
+		//よく考えたら必要な処理がない
 	}
 
-	static public void Resume(){
-
+	public void Resume(){
+		start_time = Time.time - past_time;
 	}
 }

@@ -31,12 +31,14 @@ public class TimePauser
 	private List<Rigidbody2D> _RigidBodies2D = new List<Rigidbody2D>();
 	private List<Vector2> _RigidBodyVelocities2D = new List<Vector2>();
 	private List<float> _RigidBodyAngularVelocities2D = new List<float>();
+
+
+	TimeUI timeUI;
 	
 	/// <summary>
 	/// 無視するオブジェクト
 	/// </summary>
 	private GameObject _excludeObject = null;
-	
 	/// <summary>
 	/// 
 	/// </summary>
@@ -74,19 +76,11 @@ public class TimePauser
 	/// </summary>
 	public void Resume()
 	{
-
 		// UnityEngine.UI.Selectableを有効
 		_pause_selectables.ForEach (o => o.interactable = true);
 		
 		// Behaviourを有効
 		_pause_objects.ForEach (o => o.enabled = true);
-		
-		// Rigidbodyを有効
-		for( var i=0; i<_RigidBodies.Count; i++ ) {
-			_RigidBodies[i].WakeUp();
-			_RigidBodies[i].velocity = _RigidBodyVelocities[i];
-			_RigidBodies[i].angularVelocity = _RigidBodyAngularVelocities[i];
-		}
 		
 		// Rigidbody2Dを有効
 		for( var i=0; i<_RigidBodies2D.Count; i++ ) {
@@ -94,6 +88,10 @@ public class TimePauser
 			_RigidBodies2D[i].velocity = _RigidBodyVelocities2D[i];
 			_RigidBodies2D[i].angularVelocity = _RigidBodyAngularVelocities2D[i];
 		}
+		if (timeUI != null) {
+			timeUI.Resume();
+		}
+		
 	}
 	
 	/// <summary>
@@ -102,10 +100,16 @@ public class TimePauser
 	/// <param name="objs">Objects.</param>
 	private void Pause( GameObject[] objs )
 	{
+		TimeUI temp;
 		foreach( var obj in objs ) {
+
 			// 無効にする対象かどうか
 			if (IsExclude (obj)) {
 				continue;
+			}
+			if((temp = obj.GetComponent<TimeUI>())  != null){
+				timeUI = temp;
+				timeUI.Pause();
 			}
 			
 			// UnityEngine.UI.Selectableを無効
@@ -115,16 +119,6 @@ public class TimePauser
 			// Behaviourを無効
 			var pauseBehavs = Array.FindAll(obj.GetComponentsInChildren<Behaviour>(), (cmp) => { return !(cmp is UnityEngine.EventSystems.UIBehaviour) && cmp.enabled; });
 			_pause_objects.AddRange( pauseBehavs );
-			
-			// Rigidbodyを無効
-			_RigidBodies.AddRange( Array.FindAll(obj.GetComponentsInChildren<Rigidbody>(), (cmp) => { return !cmp.IsSleeping(); }) );
-			_RigidBodyVelocities = new List<Vector3>( _RigidBodies.Count );
-			_RigidBodyAngularVelocities = new List<Vector3>( _RigidBodies.Count );
-			for ( var i = 0 ; i < _RigidBodies.Count ; ++i ) {
-				_RigidBodyVelocities[i] = _RigidBodies[i].velocity;
-				_RigidBodyAngularVelocities[i] = _RigidBodies[i].angularVelocity;
-				_RigidBodies[i].Sleep();
-			}
 			
 			// Rigidbody2Dを無効
 			_RigidBodies2D.AddRange( Array.FindAll(obj.GetComponentsInChildren<Rigidbody2D>(), (cmp) => { return !cmp.IsSleeping(); }) );
@@ -186,7 +180,6 @@ public class TimePauser
 	/// <returns>The object.</returns>
 	private static GameObject[] UIObject()
 	{
-		Debug.Log("UIObject () start");
 		var uiObjects = new List<GameObject> ();
 		foreach(Transform n in HierarchyRoot.GameGUI.transform){
 			uiObjects.Add( n.gameObject);
@@ -200,7 +193,6 @@ public class TimePauser
 	/// <returns>The object.</returns>
 	private static GameObject[] GmObject()
 	{
-		Debug.Log("GameObject () start");
 		var gmObjects = new List<GameObject>();
 		foreach(Transform n in HierarchyRoot.Charactors.transform){
 			gmObjects.Add(n.gameObject);

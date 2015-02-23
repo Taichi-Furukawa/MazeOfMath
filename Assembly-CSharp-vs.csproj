@@ -180,7 +180,6 @@
      <Compile Include="Assets\Scripts\NUGI\MenueSetup\KeyBoradinput.cs" />
      <Compile Include="Assets\Scripts\NUGI\SaveLoad\LoadButton.cs" />
      <Compile Include="Assets\Scripts\NUGI\SaveLoad\SaveButton.cs" />
-     <Compile Include="Assets\Scripts\NUGI\SaveLoad\StopTime.cs" />
      <Compile Include="Assets\Scripts\NUGI\StartMenu\ExitButton.cs" />
      <Compile Include="Assets\Scripts\NUGI\StartMenu\StartButton.cs" />
      <Compile Include="Assets\Scripts\NUGI\TimeUI.cs" />

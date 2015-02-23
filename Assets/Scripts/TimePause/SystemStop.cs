@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// モーダル/モーダレスダイアログ、ゲーム内時間Pause状態の設定が行えるダイアログクラス
 /// </summary>
-public abstract class SystemStop : MonoBehaviour
+public  class SystemStop : MonoBehaviour
 {
 	/// <summary>
 	/// ポーズ状態

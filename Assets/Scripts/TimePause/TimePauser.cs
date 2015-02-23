@@ -17,21 +17,6 @@ public class TimePauser
 	/// ポーズ状態にしたオブジェクト配列
 	/// </summary>
 	private List<Behaviour> _pause_objects = new List<Behaviour> ();
-	
-	/// <summary>
-	/// ポーズ状態にしたRigidbody配列
-	/// </summary>
-	private List<Rigidbody> _RigidBodies = new List<Rigidbody>();
-	private List<Vector3> _RigidBodyVelocities = new List<Vector3>();
-	private List<Vector3> _RigidBodyAngularVelocities = new List<Vector3>();
-	
-	/// <summary>
-	/// ポーズ状態にしたRigidbody2D配列
-	/// </summary>
-	private List<Rigidbody2D> _RigidBodies2D = new List<Rigidbody2D>();
-	private List<Vector2> _RigidBodyVelocities2D = new List<Vector2>();
-	private List<float> _RigidBodyAngularVelocities2D = new List<float>();
-
 
 	TimeUI timeUI;
 	
@@ -81,13 +66,7 @@ public class TimePauser
 		
 		// Behaviourを有効
 		_pause_objects.ForEach (o => o.enabled = true);
-		
-		// Rigidbody2Dを有効
-		for( var i=0; i<_RigidBodies2D.Count; i++ ) {
-			_RigidBodies2D[i].WakeUp();
-			_RigidBodies2D[i].velocity = _RigidBodyVelocities2D[i];
-			_RigidBodies2D[i].angularVelocity = _RigidBodyAngularVelocities2D[i];
-		}
+
 		if (timeUI != null) {
 			timeUI.Resume();
 		}
@@ -120,15 +99,7 @@ public class TimePauser
 			var pauseBehavs = Array.FindAll(obj.GetComponentsInChildren<Behaviour>(), (cmp) => { return !(cmp is UnityEngine.EventSystems.UIBehaviour) && cmp.enabled; });
 			_pause_objects.AddRange( pauseBehavs );
 			
-			// Rigidbody2Dを無効
-			_RigidBodies2D.AddRange( Array.FindAll(obj.GetComponentsInChildren<Rigidbody2D>(), (cmp) => { return !cmp.IsSleeping(); }) );
-			_RigidBodyVelocities2D = new List<Vector2>( _RigidBodies2D.Count );
-			_RigidBodyAngularVelocities2D = new List<float>( _RigidBodies2D.Count );
-			for ( var i = 0 ; i < _RigidBodies2D.Count ; ++i ) {
-				_RigidBodyVelocities2D[i] = _RigidBodies2D[i].velocity;
-				_RigidBodyAngularVelocities2D[i] = _RigidBodies2D[i].angularVelocity;
-				_RigidBodies2D[i].Sleep();
-			}
+
 		}
 		
 		// 無効

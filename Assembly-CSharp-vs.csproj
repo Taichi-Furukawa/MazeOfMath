@@ -177,6 +177,8 @@
      <Compile Include="Assets\Scripts\MapObjectsBehaviour\StairsBehaviour.cs" />
      <Compile Include="Assets\Scripts\MapWillLoad.cs" />
      <Compile Include="Assets\Scripts\NUGI\HealthMeater.cs" />
+     <Compile Include="Assets\Scripts\NUGI\Inventory\SelectBehaviour.cs" />
+     <Compile Include="Assets\Scripts\NUGI\Inventory\inventoryBehaviour.cs" />
      <Compile Include="Assets\Scripts\NUGI\MenueSetup\KeyBoradinput.cs" />
      <Compile Include="Assets\Scripts\NUGI\SaveLoad\LoadButton.cs" />
      <Compile Include="Assets\Scripts\NUGI\SaveLoad\SaveButton.cs" />
